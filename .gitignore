@@ -1,0 +1,4 @@
+simulator_libraries/
+build/
+game.exe
+.vscode/
