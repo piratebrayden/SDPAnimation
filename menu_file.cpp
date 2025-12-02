@@ -80,7 +80,56 @@ void CreateMenustats()
     LCD.SetFontColor(BLACK);
     LCD.DrawPixel(60, 60); // Draw menu item
     // Add more menu items as needed
+
 }
+//This is refusing to write to screen, it is assumed that is is being covered in some way.
+//Display the text stats to screen
+void ritestats()
+{
+    Sleep(10);
+    LCD.SetFontColor(WHITE);
+    LCD.SetFontScale(1.0);
+    LCD.WriteAt("Stats", 100, 80);
+}
+void leftclickstat()
+//The function is non-functional
+{
+// Click to access status
+float x, y;
+    while (true)
+    {   
+        //Set the x and y value equal to the box size of the menu buttons
+        if(LCD.Touch(&x, &y, true))
+        {
+            // Check if the touch is within the "Play Game" button area
+            if (x >= 60 && x <= 128 && y >= 80 && y <= 180)
+        
+
+        {
+            // Play Game button clicked
+            LCD.Clear(BLACK);
+            Sleep(500); // Pause to show highlight
+            LCD.SetFontColor(WHITE);
+            LCD.SetFontScale(1.0);  
+            LCD.WriteAt("Starting ", 80, 120);
+            Sleep(550);
+            LCD.WriteAt("         Game", 80, 120);
+            Sleep(600);
+            LCD.WriteAt("              .", 80, 120);
+             Sleep(650);
+            LCD.WriteAt("              ..", 80, 120);
+             Sleep(700);
+            LCD.WriteAt("              ...", 80, 120);
+             Sleep(750);
+            LCD.Update();
+            Sleep(1000); // Pause before starting the game
+            // Here you can add code to start the game
+        }
+    }
+}
+}
+
+
 void CreateMenuinfo()
 {
     // Example function to create a menu on the FEHLCD
@@ -137,6 +186,8 @@ int main()
     decalline4();
     riteplay();
     leftclickplay();
+    leftclickstat();
+    ritestats();
 
     
     while (1)
