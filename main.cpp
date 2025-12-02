@@ -124,18 +124,18 @@ void DrawCircle(int color, int x1, int y1, int r)
     LCD.FillCircle(x1, y1, r);
 }
 
-int main()
-{
-    // Clear background
-    LCD.SetBackgroundColor(BLACK);
-    LCD.Clear();
+// int main()
+// {
+//     // Clear background
+//     LCD.SetBackgroundColor(BLACK);
+//     LCD.Clear();
 
-    AnimationTraining();
+//     AnimationTraining();
 
-    while (1)
-    {
-        LCD.Update();
-        // Never end
-    }
-    return 0;
-}
+//     while (1)
+//     {
+//         LCD.Update();
+//         // Never end
+//     }
+//     return 0;
+// }
