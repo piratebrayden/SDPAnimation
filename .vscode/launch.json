@@ -1,0 +1,32 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug (gdb)",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/game.exe",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": true,
+			"preLaunchTask": "build",
+			"MIMode": "gdb",
+			"miDebuggerPath": "C:\\MinGW\\mingw32\\bin\\gdb.exe"
+		},
+		{
+			"name": "Run (no debug)",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/game.exe",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"externalConsole": true,
+			"preLaunchTask": "build",
+			"MIMode": "gdb",
+			"miDebuggerPath": "C:\\MinGW\\mingw32\\bin\\gdb.exe",
+			"stopAtEntry": false
+		}
+	]
+}
