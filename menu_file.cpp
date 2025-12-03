@@ -9,7 +9,7 @@ void CreateMenuplay()
 {
     // Example function to create a menu on the FEHLCD
     LCD.SetFontColor(WHITE);
-    LCD.DrawRectangle(50, 50, 200, 30); // Draw menu box
+    LCD.DrawRectangle(50, 45, 200, 30); // Draw menu box
     LCD.SetFontScale(1.5);
     LCD.SetFontColor(BLACK);
     LCD.DrawPixel(60, 60); // Draw menu item
@@ -19,7 +19,7 @@ void writeplay()
 {
     LCD.SetFontColor(WHITE);
     LCD.SetFontScale(1.0);
-    LCD.WriteAt("Play Game", 100, 60);
+    LCD.WriteAt("Play Game", 100, 50);
 }
 
 void CreateMenustats()
@@ -118,7 +118,7 @@ void testTouch()
 // Function to handle "play" button click
 bool GoToStats(float x, float y)
 {
-    if (x >= 50 && x <= 200 && y >= 60 && y <= 80)
+    if (x >= 50 && x <= 220 && y >= 40 && y <= 80)
     {
         // Play Game button clicked
         LCD.Clear(BLACK);
@@ -134,6 +134,9 @@ bool GoToStats(float x, float y)
         LCD.WriteAt("              ..", 80, 120);
         Sleep(700);
         LCD.WriteAt("              ...", 80, 120);
+        Sleep(750);
+        LCD.SetFontColor(RED);
+        LCD.WriteAt("Click to EXIT", 80, 200);
         Sleep(750);
         LCD.Update();
         Sleep(1000); // Pause before starting the game
@@ -168,12 +171,15 @@ bool GoToPlay(float x, float y)
         LCD.WriteAt("ERROR", 80, 70);
         LCD.SetFontColor(WHITE);
         Sleep(700);
-        LCD.WriteAt("Total score...", 10, 200);
+        LCD.WriteAt("Total score...", 10, 180);
         LCD.SetFontColor(RED);
         LCD.WriteAt("ERROR", 80, 90);
         Sleep(750);
         LCD.SetFontColor(RED);
-        LCD.WriteAt("ERROR", 180, 200);
+        LCD.WriteAt("ERROR", 180, 180);
+        Sleep(750);
+        LCD.SetFontColor(RED);
+        LCD.WriteAt("Click to EXIT", 80, 200);
         LCD.Update();
         Sleep(1000); // Pause before starting the game
         // Here you can add code to start the game
@@ -227,6 +233,9 @@ bool GoToInstruct(float x, float y)
         Sleep(1000);
         LCD.SetFontColor(RED);
         LCD.WriteAt("Good Luck", 10, 200);
+        Sleep(750);
+        LCD.SetFontColor(RED);
+        LCD.WriteAt("Click to EXIT", 100, 200);
         LCD.Update();
         Sleep(1000);
         // Pause before starting the game
@@ -251,7 +260,7 @@ bool GoToCredits(float x, float y)
         Sleep(750);
         LCD.WriteAt("Code by: ", 10, 50);
         Sleep(750);
-        LCD.WriteAt("Brayden Hass, and Glen Bush", 10, 70);
+        LCD.WriteAt("Brayden Hass, and Glenn Busch", 10, 70);
         Sleep(750);
         LCD.WriteAt("Made within:", 10, 90);
         Sleep(750);
@@ -264,6 +273,9 @@ bool GoToCredits(float x, float y)
         LCD.WriteAt("And a special thanks to ", 10, 170);
         LCD.SetFontColor(RED);
         LCD.WriteAt("                       you", 10, 170);
+        Sleep(750);
+        LCD.SetFontColor(RED);
+        LCD.WriteAt("Click to EXIT", 100, 200);
         LCD.Update();
         Sleep(1000); // Pause before starting the game
         // Here you can add code to start the game
@@ -272,9 +284,14 @@ bool GoToCredits(float x, float y)
     return false;
 }
 
+
+
 int main()
 {
+    //Call for reset of menu, this function will trigger the while loop the resets back to menu
+float x, y;
     while (true)
+    if(LCD.Touch(&x, &y, true))
     {
         // Clear background
         LCD.SetBackgroundColor(BLACK);
