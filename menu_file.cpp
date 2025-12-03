@@ -2,9 +2,7 @@
 #include "FEHUtility.h"
 #include "FEHRandom.h"
 #include "menu_file.h"
-void Returntomenu()
-{
-}
+
 void CreateMenuplay()
 {
     // Example function to create a menu on the FEHLCD
