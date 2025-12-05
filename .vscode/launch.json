@@ -7,13 +7,25 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/game.exe",
 			"args": [],
-			"stopAtEntry": false,
+			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": true,
-			"preLaunchTask": "build",
+			"preLaunchTask": "build debug",
 			"MIMode": "gdb",
-			"miDebuggerPath": "C:\\MinGW\\mingw32\\bin\\gdb.exe"
+			"miDebuggerPath": "C:\\MinGW\\mingw32\\bin\\gdb.exe",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			],
+			"logging": {
+				"trace": true,
+				"traceResponse": true,
+				"engineLogging": true
+			}
 		},
 		{
 			"name": "Run (no debug)",

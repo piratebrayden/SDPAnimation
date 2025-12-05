@@ -10,6 +10,15 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "build debug",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build_debug.bat",
+            "args": [],
+            "group": {
+                "kind": "build"
+            }
         }
     ]
 }

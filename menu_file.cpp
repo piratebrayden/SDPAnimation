@@ -96,7 +96,7 @@ void decalline4()
 }
 
 // Touch function
-void testTouch()
+void testTouch(GridManager &gridManager)
 {
     // New click code
     float x, y;
@@ -106,7 +106,7 @@ void testTouch()
         if (LCD.Touch(&x, &y, true))
         {
             // Check if the touch is within the "Play Game" button area
-            if (GoToPlay(x, y) || GoToStats(x, y) || GoToInstruct(x, y) || GoToCredits(x, y))
+            if (GoToStats(x, y, gridManager) || GoToPlay(x, y, gridManager) || GoToInstruct(x, y) || GoToCredits(x, y))
             {
                 break;
             }
@@ -114,7 +114,7 @@ void testTouch()
     }
 }
 // Function to handle "play" button click
-bool GoToStats(float x, float y)
+bool GoToPlay(float x, float y, GridManager &gridManager)
 {
     if (x >= 50 && x <= 220 && y >= 40 && y <= 80)
     {
@@ -133,6 +133,8 @@ bool GoToStats(float x, float y)
         Sleep(700);
         LCD.WriteAt("              ...", 80, 120);
         Sleep(750);
+        LCD.Clear(BLACK);
+        gridManager.DisplayGrid();
         LCD.SetFontColor(RED);
         LCD.WriteAt("Click to EXIT", 80, 200);
         Sleep(750);
@@ -144,7 +146,7 @@ bool GoToStats(float x, float y)
     return false;
 }
 // Function to handle "stats" button click
-bool GoToPlay(float x, float y)
+bool GoToStats(float x, float y, GridManager &gridManager)
 {
     if (x >= 60 && x <= 200 && y >= 80 && y <= 100)
     {
@@ -282,34 +284,39 @@ bool GoToCredits(float x, float y)
     return false;
 }
 
-
-
 int main()
 {
-    //Call for reset of menu, this function will trigger the while loop the resets back to menu
-float x, y;
-    while (true)
-    if(LCD.Touch(&x, &y, true))
-    {
-        // Clear background
-        LCD.SetBackgroundColor(BLACK);
-        LCD.Clear();
+    class ResourceManager resourceManager;
+    class GridManager gridManager(11, 6, 28);
 
-        CreateMenuplay();
-        CreateMenuinfo();
-        createMenuCredits();
-        CreateMenustats();
-        decalline();
-        decalline2();
-        decalline3();
-        decalline4();
-        writeplay();
-        writeInstruct();
-        writestats();
-        writecredits();
-        testTouch();
-    }
+    gridManager.InitializeGrid(resourceManager);
     
+    // Call for reset of menu, this function will trigger the while loop the resets back to menu
+    float x, y;
+    while (true)
+    {
+        if (LCD.Touch(&x, &y, true))
+        {
+            // Clear background
+            LCD.SetBackgroundColor(BLACK);
+            LCD.Clear();
+
+            CreateMenuplay();
+            CreateMenuinfo();
+            createMenuCredits();
+            CreateMenustats();
+            decalline();
+            decalline2();
+            decalline3();
+            decalline4();
+            writeplay();
+            writeInstruct();
+            writestats();
+            writecredits();
+            testTouch(gridManager);
+        }
+    }
+
     while (1)
     {
         LCD.Update();

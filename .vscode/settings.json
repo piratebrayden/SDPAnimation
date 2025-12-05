@@ -2,5 +2,10 @@
     "cSpell.words": [
         "Brayden",
         "FEHLCD"
-    ]
+    ],
+    "files.associations": {
+        "resources": "cpp",
+        "memory": "cpp",
+        "optional": "cpp"
+    }
 }
