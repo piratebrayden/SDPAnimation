@@ -2,6 +2,7 @@
 #include "FEHUtility.h"
 #include "FEHRandom.h"
 #include "menu_file.h"
+#include <FEHImages.h>
 
 void CreateMenuplay()
 {
@@ -283,6 +284,57 @@ bool GoToCredits(float x, float y)
     }
     return false;
 }
+// Will atempt to draw water image
+// This will most likely be moved and disabled, right now it is here for testing
+void imagewater()
+{
+    FEHImage water;
+    water.Open("water1.png");
+    water.Draw(0, 0);
+    LCD.Update();
+}
+// image of the tree
+void imagetree()
+{
+    FEHImage tree;
+    tree.Open("tree1.png");
+    tree.Draw(0, 0);
+    LCD.Update();
+}
+//Cave image code
+void imagecave()
+{
+    FEHImage cave;
+    cave.Open("cave1.png");
+    cave.Draw(0, 0);
+    LCD.Update();
+}
+//image of wheat as in the food image
+void imagefood()
+{
+    FEHImage food;
+    food.Open("food1.png");
+    food.Draw(0, 0);
+    LCD.Update();
+}
+//The grass
+void imagegrass()
+{
+    FEHImage grass;
+    grass.Open("grass1.png");
+    grass.Draw(0, 0);
+    LCD.Update();
+}
+//Building sprite
+void imagebuilding()
+{
+    FEHImage building;
+    building.Open("building1.png");
+    building.Draw(0, 0);
+    LCD.Update();
+}
+
+//This comment is here to make a border for the image code
 
 int main()
 {
@@ -305,6 +357,16 @@ int main()
             CreateMenuinfo();
             createMenuCredits();
             CreateMenustats();
+            //Water test
+
+            imagewater();
+            imagetree();
+            imagecave();
+            imagefood();
+            imagegrass();
+            imagebuilding();
+
+            //Water test 
             decalline();
             decalline2();
             decalline3();
